@@ -163,6 +163,7 @@ namespace HotelsScrap
         {
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
+            Thread.Sleep(1000);
             string text = doc.DocumentNode.InnerText;
 
             Regex emailRegex = new Regex(@"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}");
@@ -195,7 +196,7 @@ namespace HotelsScrap
 
                     driver.Navigate().GoToUrl(searchUrl);
                     AppendLog($"🔍 Searching: {query}");
-
+                    Thread.Sleep(1000); 
                     WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
 
                     try
@@ -218,7 +219,7 @@ namespace HotelsScrap
                                 // Skip known aggregators or irrelevant search links
                                 if (href.Contains("booking.com") || href.Contains("expedia.com") ||
                                     href.Contains("tripadvisor.com") || href.Contains("hotels.com") ||
-                                    href.Contains("/search?") || href.Contains("google.com") || href.Contains("webcache"))
+                                    href.Contains("/search?") || href.Contains("google.com") || href.Contains("webcache") || href.Contains("facebook"))
                                     continue;
 
                                 // Heuristic: try to match any word from hotel name in the URL

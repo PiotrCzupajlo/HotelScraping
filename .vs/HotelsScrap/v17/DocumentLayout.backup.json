@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stasi\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|c:\\users\\stasi\\desktop\\hotelsscrap\\hotelsscrap\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|solutionrelative:hotelsscrap\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,19 +33,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "XLWorkbook.cs",
+              "DocumentMoniker": "C:\\Users\\stasi\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs",
+              "RelativeDocumentMoniker": "..\\..\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs",
+              "ToolTip": "C:\\Users\\stasi\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs",
+              "RelativeToolTip": "..\\..\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs",
+              "ViewState": "AgIAALEBAAAAAAAAAAAiwMMBAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T12:26:17.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "HotelsScrap\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\MainWindow.xaml.cs",
               "RelativeToolTip": "HotelsScrap\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAOoAAAAAAAAAAAAUwP4AAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAAAN8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T19:20:22.673Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "HotelsScrap",
               "DocumentMoniker": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\HotelsScrap.csproj",
               "RelativeDocumentMoniker": "HotelsScrap\\HotelsScrap.csproj",
@@ -53,7 +69,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\MainWindow.xaml",
               "RelativeDocumentMoniker": "HotelsScrap\\MainWindow.xaml",
