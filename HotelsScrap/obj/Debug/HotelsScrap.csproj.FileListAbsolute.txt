@@ -58,3 +58,8 @@ C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\obj\Debug\HotelsScrap.csproj.Core
 C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\obj\Debug\HotelsSc.B927CD2D.Up2Date
 C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\obj\Debug\HotelsScrap.exe
 C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\obj\Debug\HotelsScrap.pdb
+C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\bin\Debug\HotelsScrap.exe.manifest
+C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\bin\Debug\HotelsScrap.application
+C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\obj\Debug\HotelsScrap.exe.manifest
+C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\obj\Debug\HotelsScrap.application
+C:\Users\stasi\Desktop\HotelsScrap\HotelsScrap\bin\Debug\SeleniumExtras.WaitHelpers.dll

@@ -9,9 +9,10 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-
+using SeleniumExtras.WaitHelpers;
 namespace HotelsScrap
 {
     /// <summary>
@@ -24,16 +25,21 @@ namespace HotelsScrap
         private async void StartButton_Click(object sender, RoutedEventArgs e)
         {
             string town = TownTextBox.Text.Trim();
+            string link = tblink.Text;
             if (string.IsNullOrEmpty(town))
             {
-                MessageBox.Show("Please enter a town name.");
-                return;
+
+                if (string.IsNullOrEmpty(link))
+                {
+                    MessageBox.Show("Please enter a town name or link.");
+                    return;
+                }
             }
 
             LogTextBox.Clear();
             AppendLog($"📍 Scraping hotels in: {town}");
 
-            List<string> hotelNames = await Task.Run(() => ScrapeBooking(town));
+            List<string> hotelNames = await Task.Run(() => ScrapeBooking(town,link));
             await Task.Run(() => GoogleSearchHotels(town, hotelNames));
         }
 
@@ -55,10 +61,15 @@ namespace HotelsScrap
             public List<string> Emails { get; set; } = new();
         }
 
-        List<string> ScrapeBooking(string town)
+        List<string> ScrapeBooking(string town, string link)
         {
             List<string> hotelNames = new();
-            string url = $"https://www.booking.com/searchresults.pl.html?ss={Uri.EscapeDataString(town)}&nflt=ht_id%3D204";
+            string url = "";
+
+            if (string.IsNullOrEmpty(link))
+                url = $"https://www.booking.com/searchresults.pl.html?ss={Uri.EscapeDataString(town)}&nflt=ht_id%3D204";
+            else if (string.IsNullOrEmpty(town))
+                url = link;
 
             var options = new ChromeOptions();
             options.AddArgument("--disable-blink-features=AutomationControlled");
@@ -74,12 +85,39 @@ namespace HotelsScrap
                     WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     ScrollToEnd(driver);
 
+                    // Repeatedly click "Load more results" if it appears
+                    while (true)
+                    {
+                        try
+                        {
+                            var loadMoreButton = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions
+                                .ElementToBeClickable(By.XPath("//span[contains(text(), 'Load more results') or contains(text(), 'Załaduj więcej wyników')]/..")));
+
+                            loadMoreButton.Click();
+                            AppendLog("🔘 Clicked 'Load more results' button");
+
+                            // Wait for content to load after clicking
+                            Thread.Sleep(3000);
+                            ScrollToEnd(driver);
+                        }
+                        catch (WebDriverTimeoutException)
+                        {
+                            AppendLog("✅ No more 'Load more results' buttons.");
+                            break;
+                        }
+                    }
+
+                    // Now scrape the hotel names
                     var hotels = driver.FindElements(By.CssSelector("div[data-testid='property-card']"));
                     foreach (var hotel in hotels)
                     {
-                        string name = hotel.FindElement(By.CssSelector("div[data-testid='title']")).Text;
-                        hotelNames.Add(name);
-                        AppendLog($"🏨 Hotel: {name}");
+                        try
+                        {
+                            string name = hotel.FindElement(By.CssSelector("div[data-testid='title']")).Text;
+                            hotelNames.Add(name);
+                            AppendLog($"🏨 Hotel: {name}");
+                        }
+                        catch (NoSuchElementException) { /* Skip if title not found */ }
                     }
                 }
                 catch (Exception ex)
