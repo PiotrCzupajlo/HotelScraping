@@ -3,18 +3,27 @@
   "WorkspaceRootPath": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stasi\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|C:\\Users\\stasi\\Desktop\\HotelsScrap\\hotelsscrap\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|solutionrelative:hotelsscrap\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|c:\\users\\stasi\\desktop\\hotelsscrap\\hotelsscrap\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|solutionrelative:hotelsscrap\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stasi\\AppData\\Local\\Temp\\.vsdbgsrc\\441aa1deb531afe2ec4f9e242ea1297ac65aa13d3f6cfc27d5a7906f16259e73\\Dispatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stasi\\AppData\\Local\\Temp\\.vsdbgsrc\\1c49e122f706b173ef80264e1371626981876118187f00792d2e6b847366c703\\HttpWebRequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|HotelsScrap||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\stasi\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|C:\\Users\\stasi\\Desktop\\HotelsScrap\\hotelsscrap\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|solutionrelative:hotelsscrap\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|HotelsScrap||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{AD88565B-426F-43FD-9F24-4E953E88454A}|HotelsScrap\\HotelsScrap.csproj|c:\\users\\stasi\\desktop\\hotelsscrap\\hotelsscrap\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,7 +33,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -32,26 +41,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "HttpWebRequest.cs",
+              "DocumentMoniker": "C:\\Users\\stasi\\AppData\\Local\\Temp\\.vsdbgsrc\\1c49e122f706b173ef80264e1371626981876118187f00792d2e6b847366c703\\HttpWebRequest.cs",
+              "RelativeDocumentMoniker": "..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\1c49e122f706b173ef80264e1371626981876118187f00792d2e6b847366c703\\HttpWebRequest.cs",
+              "ToolTip": "C:\\Users\\stasi\\AppData\\Local\\Temp\\.vsdbgsrc\\1c49e122f706b173ef80264e1371626981876118187f00792d2e6b847366c703\\HttpWebRequest.cs[Tylko do odczytu]",
+              "RelativeToolTip": "..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\1c49e122f706b173ef80264e1371626981876118187f00792d2e6b847366c703\\HttpWebRequest.cs[Tylko do odczytu]",
+              "ViewState": "AgIAAOIIAAAAAAAAAAAiwHYJAAADAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T14:37:07.967Z",
+              "EditorCaption": "[Tylko do odczytu]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dispatcher.cs",
+              "DocumentMoniker": "C:\\Users\\stasi\\AppData\\Local\\Temp\\.vsdbgsrc\\441aa1deb531afe2ec4f9e242ea1297ac65aa13d3f6cfc27d5a7906f16259e73\\Dispatcher.cs",
+              "RelativeDocumentMoniker": "..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\441aa1deb531afe2ec4f9e242ea1297ac65aa13d3f6cfc27d5a7906f16259e73\\Dispatcher.cs",
+              "ToolTip": "C:\\Users\\stasi\\AppData\\Local\\Temp\\.vsdbgsrc\\441aa1deb531afe2ec4f9e242ea1297ac65aa13d3f6cfc27d5a7906f16259e73\\Dispatcher.cs[Tylko do odczytu]",
+              "RelativeToolTip": "..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\441aa1deb531afe2ec4f9e242ea1297ac65aa13d3f6cfc27d5a7906f16259e73\\Dispatcher.cs[Tylko do odczytu]",
+              "ViewState": "AgIAAD0FAAAAAAAAAAAiwFAFAAADAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T14:14:31.14Z",
+              "EditorCaption": "[Tylko do odczytu]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "XLWorkbook.cs",
               "DocumentMoniker": "C:\\Users\\stasi\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs",
               "RelativeDocumentMoniker": "..\\..\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs",
               "ToolTip": "C:\\Users\\stasi\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs",
               "RelativeToolTip": "..\\..\\AppData\\Local\\SourceServer\\2a03df8bea79e9936e14c0f18b73656ff8b0d02d7f48945593e9d63835b2dea0\\ClosedXML\\Excel\\XLWorkbook.cs",
-              "ViewState": "AgIAALEBAAAAAAAAAAAiwL0BAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAK8CAAAAAAAAAADwv70BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T12:26:17.115Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "HotelsScrap\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\MainWindow.xaml.cs",
               "RelativeToolTip": "HotelsScrap\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAAAN8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAywEoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T19:20:22.673Z",
               "EditorCaption": ""
@@ -65,18 +100,20 @@
               "ToolTip": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\HotelsScrap.csproj",
               "RelativeToolTip": "HotelsScrap\\HotelsScrap.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-04T19:35:00.872Z"
+              "WhenOpened": "2025-04-04T19:35:00.872Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\MainWindow.xaml",
               "RelativeDocumentMoniker": "HotelsScrap\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\stasi\\Desktop\\HotelsScrap\\HotelsScrap\\MainWindow.xaml",
               "RelativeToolTip": "HotelsScrap\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-04T19:20:23.368Z"
+              "WhenOpened": "2025-04-04T19:20:23.368Z",
+              "EditorCaption": ""
             }
           ]
         }

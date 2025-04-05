@@ -22,7 +22,7 @@ namespace HotelsScrap
     {
         public MainWindow() => InitializeComponent();
 
-        private async void StartButton_Click(object sender, RoutedEventArgs e)
+        private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             string town = TownTextBox.Text.Trim();
             string link = tblink.Text;
@@ -39,8 +39,8 @@ namespace HotelsScrap
             LogTextBox.Clear();
             AppendLog($"📍 Scraping hotels in: {town}");
 
-            List<string> hotelNames = await Task.Run(() => ScrapeBooking(town,link));
-            await Task.Run(() => GoogleSearchHotels(town, hotelNames));
+            List<string> hotelNames = ScrapeBooking(town,link);
+            GoogleSearchHotels(town, hotelNames);
         }
 
         void AppendLog(string message)
@@ -67,10 +67,11 @@ namespace HotelsScrap
             string url = "";
 
             if (string.IsNullOrEmpty(link))
-                url = $"https://www.booking.com/searchresults.pl.html?ss={Uri.EscapeDataString(town)}&nflt=ht_id%3D204";
-            else if (string.IsNullOrEmpty(town))
+                url = $"https://www.booking.com/searchresults.pl.html?ss={Uri.EscapeDataString(town)}";
+            else
+            {
                 url = link;
-
+            }
             var options = new ChromeOptions();
             options.AddArgument("--disable-blink-features=AutomationControlled");
             options.AddArgument("--no-sandbox");
@@ -145,7 +146,7 @@ namespace HotelsScrap
             }
         }
 
-        async Task<string> GetHtmlAsync(string url)
+        public async Task<string> GetHtmlAsync(string url)
         {
             try
             {
@@ -163,7 +164,6 @@ namespace HotelsScrap
         {
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
-            Thread.Sleep(1000);
             string text = doc.DocumentNode.InnerText;
 
             Regex emailRegex = new Regex(@"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}");
@@ -176,9 +176,15 @@ namespace HotelsScrap
             return (emails, phones);
         }
 
-        void GoogleSearchHotels(string town, List<string> hotelNames)
+        public async void GoogleSearchHotels(string town, List<string> hotelNames)
         {
             List<HotelInfo> allHotels = new();
+
+            if (hotelNames == null || hotelNames.Count == 0)
+            {
+                AppendLog("❌ No hotel names were provided to search.");
+                return;
+            }
 
             var options = new ChromeOptions();
             options.AddArgument("--disable-blink-features=AutomationControlled");
@@ -188,24 +194,31 @@ namespace HotelsScrap
 
             using (IWebDriver driver = new ChromeDriver(options))
             {
+                WebDriverWait wait = new(driver, TimeSpan.FromSeconds(5));
+
                 foreach (var hotel in hotelNames)
                 {
                     var info = new HotelInfo { Name = hotel };
                     string query = $"{town} {hotel} kontakt";
                     string searchUrl = $"https://www.google.com/search?q={Uri.EscapeDataString(query)}";
 
-                    driver.Navigate().GoToUrl(searchUrl);
-                    AppendLog($"🔍 Searching: {query}");
-                    Thread.Sleep(1000); 
-                    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-
                     try
                     {
-                        var phoneElement = wait.Until(d => d.FindElement(By.XPath("//a[@data-dtype='d3ph']//span")));
-                        info.PrimaryPhone = phoneElement.Text.Trim();
-                    }
-                    catch { info.PrimaryPhone = "N/A"; }
+                        driver.Navigate().GoToUrl(searchUrl);
+                        AppendLog($"🔍 Searching: {query}");
 
+
+                        try
+                        {
+                            var phoneElement = wait.Until(d =>
+                                d.FindElement(By.XPath("//a[@data-dtype='d3ph']//span")));
+                            info.PrimaryPhone = phoneElement.Text.Trim();
+                        }
+                        catch (WebDriverTimeoutException)
+                        {
+                            AppendLog($"⚠️ No phone found for: {hotel}");
+                            info.PrimaryPhone = "N/A";
+                        }
 
                         try
                         {
@@ -213,48 +226,71 @@ namespace HotelsScrap
                             foreach (var link in searchResults)
                             {
                                 string href = link.GetAttribute("href");
+                                if (string.IsNullOrWhiteSpace(href)) continue;
 
-                                if (string.IsNullOrEmpty(href)) continue;
-
-                                // Skip known aggregators or irrelevant search links
+                                // Skip known aggregators and junk URLs
                                 if (href.Contains("booking.com") || href.Contains("expedia.com") ||
                                     href.Contains("tripadvisor.com") || href.Contains("hotels.com") ||
-                                    href.Contains("/search?") || href.Contains("google.com") || href.Contains("webcache") || href.Contains("facebook"))
+                                    href.Contains("/search?") || href.Contains("google.com") ||
+                                    href.Contains("webcache") || href.Contains("facebook") || href.Contains("booked.com"))
                                     continue;
 
-                                // Heuristic: try to match any word from hotel name in the URL
                                 var hotelWords = hotel.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                                bool matchFound = hotelWords.Any(word => href.ToLower().Contains(word.ToLower()));
-
-                                if (matchFound)
+                                if (hotelWords.Any(word => href.ToLower().Contains(word.ToLower())))
                                 {
                                     info.Website = href;
                                     break;
                                 }
                             }
                         }
-                        catch { info.Website = "N/A"; }
-
+                        catch (Exception ex)
+                        {
+                            AppendLog($"⚠️ Error finding website for {hotel}: {ex.Message}");
+                            info.Website = "N/A";
+                        }
 
                         if (!string.IsNullOrWhiteSpace(info.Website) && info.Website != "N/A")
-                    {
-                        try
                         {
-                            string html = GetHtmlAsync(info.Website).Result;
-                            var (emails, phones) = ExtractContactInfo(html);
-                            info.Emails.AddRange(emails);
-                            info.AdditionalPhones.AddRange(phones);
+                            try
+                            {
+                                string html = await GetHtmlAsync(info.Website);
+                                var (emails, phones) = ExtractContactInfo(html);
+                                info.Emails.AddRange(emails);
+                                info.AdditionalPhones.AddRange(phones);
+                            }
+                            catch (Exception ex)
+                            {
+                                AppendLog($"⚠️ Error extracting contact info for {info.Name}: {ex.Message}");
+                            }
                         }
-                        catch { }
-                    }
 
-                    allHotels.Add(info);
+                        allHotels.Add(info);
+                    }
+                    catch (Exception ex)
+                    {
+                        AppendLog($"❌ General error while processing {hotel}: {ex.Message}");
+                    }
                 }
             }
 
-            ExportToExcel(allHotels,town);
-            AppendLog("✅ Excel file saved in C:\\Scraper\\");
+            if (allHotels.Count == 0)
+            {
+                AppendLog("❌ No hotels were processed successfully. Aborting export.");
+                return;
+            }
+
+            try
+            {
+                Directory.CreateDirectory(@"C:\Scraper");
+                ExportToExcel(allHotels, town);
+                AppendLog("✅ Excel file saved in C:\\Scraper\\");
+            }
+            catch (Exception ex)
+            {
+                AppendLog($"❌ Error saving Excel file: {ex.Message}");
+            }
         }
+
 
         void ExportToExcel(List<HotelInfo> hotels,string town)
         {
