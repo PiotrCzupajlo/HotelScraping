@@ -205,23 +205,37 @@ namespace HotelsScrap
                     }
                     catch { info.PrimaryPhone = "N/A"; }
 
-                    try
-                    {
-                        var searchResults = driver.FindElements(By.XPath("//div[@id='search']//a[@href]"));
-                        foreach (var link in searchResults)
+
+                        try
                         {
-                            string href = link.GetAttribute("href");
-                            if (!href.Contains("booking.com") && !href.Contains("expedia.com") &&
-                                !href.Contains("tripadvisor.com") && !href.Contains("hotels.com"))
+                            var searchResults = driver.FindElements(By.XPath("//div[@id='search']//a[@href]"));
+                            foreach (var link in searchResults)
                             {
-                                info.Website = href;
-                                break;
+                                string href = link.GetAttribute("href");
+
+                                if (string.IsNullOrEmpty(href)) continue;
+
+                                // Skip known aggregators or irrelevant search links
+                                if (href.Contains("booking.com") || href.Contains("expedia.com") ||
+                                    href.Contains("tripadvisor.com") || href.Contains("hotels.com") ||
+                                    href.Contains("/search?") || href.Contains("google.com") || href.Contains("webcache"))
+                                    continue;
+
+                                // Heuristic: try to match any word from hotel name in the URL
+                                var hotelWords = hotel.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                                bool matchFound = hotelWords.Any(word => href.ToLower().Contains(word.ToLower()));
+
+                                if (matchFound)
+                                {
+                                    info.Website = href;
+                                    break;
+                                }
                             }
                         }
-                    }
-                    catch { info.Website = "N/A"; }
+                        catch { info.Website = "N/A"; }
 
-                    if (!string.IsNullOrWhiteSpace(info.Website) && info.Website != "N/A")
+
+                        if (!string.IsNullOrWhiteSpace(info.Website) && info.Website != "N/A")
                     {
                         try
                         {
