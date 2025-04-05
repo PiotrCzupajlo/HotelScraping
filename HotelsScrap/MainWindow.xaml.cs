@@ -251,11 +251,11 @@ namespace HotelsScrap
                 }
             }
 
-            ExportToExcel(allHotels);
-            AppendLog("✅ Excel file saved as 'booking_hotels.xlsx'");
+            ExportToExcel(allHotels,town);
+            AppendLog("✅ Excel file saved in C:\\Scraper\\");
         }
 
-        void ExportToExcel(List<HotelInfo> hotels)
+        void ExportToExcel(List<HotelInfo> hotels,string town)
         {
             using var wb = new XLWorkbook();
             var ws = wb.Worksheets.Add("Hotels");
@@ -277,7 +277,8 @@ namespace HotelsScrap
                 row++;
             }
 
-            wb.SaveAs("booking_hotels.xlsx");
+            wb.SaveAs(@"C:\Scraper\booking_hotels_"+town+".xlsx");
+
         }
     }
 }
